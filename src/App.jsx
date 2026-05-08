@@ -50,9 +50,21 @@ function App() {
     <div className={theme === "dark" 
     ? "min-h-screen bg-slate-950 text-white" 
     : "min-h-screen bg-white text-black"}>
-      <Navbar algorithm={algorithm} setAlgorithm={setAlgorithm} theme={theme} toggleTheme={toggleTheme} />
-      <Controls setArr={setArr} setSize={setSize} size={size} setSpeed={setSpeed} speed={speed} handleStart={handleStart} isSorting={isSorting} />
-      <Visualizer arr={arr} speed={speed} />
+      <Navbar algorithm={algorithm} setAlgorithm={setAlgorithm} theme={theme} />
+
+<div className="flex items-start justify-between px-6 py-4">
+  <Controls setArr={setArr} setSize={setSize} size={size} setSpeed={setSpeed} speed={speed} handleStart={handleStart} isSorting={isSorting}
+  />
+  <button 
+    className="rounded-md border border-slate-300 px-4 py-2"
+    onClick={toggleTheme}
+  >
+    {theme === "light" ? "Dark Mode" : "Light Mode"}
+  </button>
+</div>
+
+<Visualizer arr={arr} speed={speed} />
+
     </div>
   )
 }
