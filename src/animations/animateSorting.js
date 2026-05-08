@@ -31,7 +31,7 @@ export function animateSorting(animations,speed){
             if (i === animations.length - 1) {
                 for (let k=0;k<bars.length;k++) {
                     setTimeout(() => {
-                        if (bars[k]) bars[k].style.backgroundColor = "green";
+                        if (bars[k]) bars[k].style.backgroundColor = "#10B981";
                     },k*20)
                 }
             }
