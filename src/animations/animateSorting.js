@@ -5,22 +5,33 @@ export function animateSorting(animations,speed){
         const [a,b] = animation.indices
         setTimeout(()=>{
             if (animation.type === "compare") {
-            bars[a].style.backgroundColor = "red";
-            bars[b].style.backgroundColor = "red";
-            setTimeout(() => {
-            bars[a].style.backgroundColor = "teal";
-            bars[b].style.backgroundColor = "teal";
-            }, speed);
+                if (bars[a]) bars[a].style.backgroundColor = "red";
+                if (bars[b]) bars[b].style.backgroundColor = "red";
+                setTimeout(() => {
+                    if (bars[a]) bars[a].style.backgroundColor = "teal";
+                    if (bars[b]) bars[b].style.backgroundColor = "teal";
+                }, speed);
             }
             if (animation.type === "swap"){
-                const tempHeight = bars[a].style.height
-                bars[a].style.height = bars[b].style.height
-                bars[b].style.height = tempHeight
+                if (bars[a] && bars[b]) {
+                    const tempHeight = bars[a].style.height
+                    bars[a].style.height = bars[b].style.height
+                    bars[b].style.height = tempHeight
+                }
+            }
+            if (animation.type === "overwrite") {
+                if (bars[a]) {
+                    bars[a].style.height = `${b}px`;
+                    bars[a].style.backgroundColor = "lightgreen";
+                    setTimeout(() => {
+                        if (bars[a]) bars[a].style.backgroundColor = "teal";
+                    }, speed * 2);
+                }
             }
             if (i === animations.length - 1) {
                 for (let k=0;k<bars.length;k++) {
                     setTimeout(() => {
-                    bars[k].style.backgroundColor = "green";
+                        if (bars[k]) bars[k].style.backgroundColor = "green";
                     },k*20)
                 }
             }

@@ -3,7 +3,7 @@ import Bar from "./Bar"
 
 export default function Visualizer({arr}) {
     return (
-        <div>
+        <div className="flex justify-center w-full px-4">
             <div
             style={{
                 display: "flex",
@@ -11,6 +11,8 @@ export default function Visualizer({arr}) {
                 justifyContent: "center",
                 height: "400px",
                 marginTop: "40px",
+                width: "100%",
+                maxWidth: "1200px"
             }}>
                 {arr.map((value, index) => (
                     <Bar key={index} value={value} />

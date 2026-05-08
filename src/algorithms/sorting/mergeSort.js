@@ -1,39 +1,39 @@
 export function mergeSort(arr, animations) {
   if (arr.length <= 1) return;
-  const auxiliaryArray = arr.slice();
-  doMergeSort(arr, 0, arr.length - 1, auxiliaryArray, animations);
+  doMergeSort(arr, 0, arr.length - 1, animations);
 }
 
-function doMergeSort(mainArray, startIdx, endIdx, auxiliaryArray, animations) {
+function doMergeSort(arr, startIdx, endIdx, animations) {
   if (startIdx === endIdx) return;
   const middleIdx = Math.floor((startIdx + endIdx) / 2);
-  doMergeSort(auxiliaryArray, startIdx, middleIdx, mainArray, animations);
-  doMergeSort(auxiliaryArray, middleIdx + 1, endIdx, mainArray, animations);
-  doMerge(mainArray, startIdx, middleIdx, endIdx, auxiliaryArray, animations);
+  doMergeSort(arr, startIdx, middleIdx, animations);
+  doMergeSort(arr, middleIdx + 1, endIdx, animations);
+  doMerge(arr, startIdx, middleIdx, endIdx, animations);
 }
 
-function doMerge(mainArray, startIdx, middleIdx, endIdx, auxiliaryArray, animations) {
-  let k = startIdx;
-  let i = startIdx;
-  let j = middleIdx + 1;
-  while (i <= middleIdx && j <= endIdx) {
-    animations.push({ type: "compare", indices: [i, j] });
-    if (auxiliaryArray[i] <= auxiliaryArray[j]) {
-      animations.push({ type: "overwrite", indices: [k, auxiliaryArray[i]] });
-      mainArray[k++] = auxiliaryArray[i++];
+function doMerge(arr, startIdx, middleIdx, endIdx, animations) {
+  const left = arr.slice(startIdx, middleIdx + 1);
+  const right = arr.slice(middleIdx + 1, endIdx + 1);
+  let i = 0, j = 0, k = startIdx;
+  
+  while (i < left.length && j < right.length) {
+    animations.push({ type: "compare", indices: [startIdx + i, middleIdx + 1 + j] });
+    if (left[i] <= right[j]) {
+      animations.push({ type: "overwrite", indices: [k, left[i]] });
+      arr[k++] = left[i++];
     } else {
-      animations.push({ type: "overwrite", indices: [k, auxiliaryArray[j]] });
-      mainArray[k++] = auxiliaryArray[j++];
+      animations.push({ type: "overwrite", indices: [k, right[j]] });
+      arr[k++] = right[j++];
     }
   }
-  while (i <= middleIdx) {
-    animations.push({ type: "compare", indices: [i, i] });
-    animations.push({ type: "overwrite", indices: [k, auxiliaryArray[i]] });
-    mainArray[k++] = auxiliaryArray[i++];
+  while (i < left.length) {
+    animations.push({ type: "compare", indices: [startIdx + i, startIdx + i] });
+    animations.push({ type: "overwrite", indices: [k, left[i]] });
+    arr[k++] = left[i++];
   }
-  while (j <= endIdx) {
-    animations.push({ type: "compare", indices: [j, j] });
-    animations.push({ type: "overwrite", indices: [k, auxiliaryArray[j]] });
-    mainArray[k++] = auxiliaryArray[j++];
+  while (j < right.length) {
+    animations.push({ type: "compare", indices: [middleIdx + 1 + j, middleIdx + 1 + j] });
+    animations.push({ type: "overwrite", indices: [k, right[j]] });
+    arr[k++] = right[j++];
   }
 }

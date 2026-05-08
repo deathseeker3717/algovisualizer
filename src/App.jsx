@@ -25,22 +25,33 @@ function App() {
   const handleStart = () => {
     setIsSorting(true)
     let animations = []
+    const arrCopy = arr.slice();
     switch(algorithm) {
       case "Bubble Sort":
-        bubbleSort(arr, animations)
+        bubbleSort(arrCopy, animations)
         break;
       case "Merge Sort":
-        mergeSort(arr, animations)
+        mergeSort(arrCopy, animations)
         break;
       case "Quick Sort":
-        quickSort(arr, animations)
+        quickSort(arrCopy, animations)
         break;
       case "Insertion Sort":
-        insertionSort(arr, animations)
+        insertionSort(arrCopy, animations)
         break;
     }
-    animateSorting(animations, speed);
-    setIsSorting(false);
+    
+    // Invert the speed so a slider value of 100 means 1ms delay (fastest)
+    const delay = 101 - speed;
+    animateSorting(animations, delay);
+    
+    // Give the final green flash enough time to finish before allowing React to re-render
+    const totalAnimationTime = animations.length === 0 ? 0 : (animations.length * delay) + (arrCopy.length * 20);
+    
+    setTimeout(() => {
+      setIsSorting(false);
+      setArr(arrCopy); // Update state to match the final sorted array!
+    }, totalAnimationTime);
   }
 
   useEffect(() => {
@@ -51,7 +62,7 @@ function App() {
     <div className={theme === "🌚" 
     ? "min-h-screen bg-slate-950 text-white" 
     : "min-h-screen bg-white text-black"}>
-      <Navbar algorithm={algorithm} setAlgorithm={setAlgorithm} theme={theme} />
+      <Navbar algorithm={algorithm} setAlgorithm={setAlgorithm} theme={theme} isSorting={isSorting} />
 
 <div className="flex items-start justify-between px-6 py-4">
   <Controls setArr={setArr} setSize={setSize} size={size} setSpeed={setSpeed} speed={speed} handleStart={handleStart} isSorting={isSorting}
