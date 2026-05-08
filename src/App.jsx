@@ -16,6 +16,11 @@ function App() {
   const [algorithm, setAlgorithm] = useState("Bubble Sort")
   const [isSorting, setIsSorting] = useState(false)
 
+  const [theme, setTheme] = useState("light");
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  }
+
   const handleStart = () => {
     setIsSorting(true)
     let animations = []
@@ -42,8 +47,10 @@ function App() {
   },[size])
 
   return (
-    <div>
-      <Navbar algorithm={algorithm} setAlgorithm={setAlgorithm} />
+    <div className={theme === "dark" 
+    ? "min-h-screen bg-slate-950 text-white" 
+    : "min-h-screen bg-white text-black"}>
+      <Navbar algorithm={algorithm} setAlgorithm={setAlgorithm} theme={theme} toggleTheme={toggleTheme} />
       <Controls setArr={setArr} setSize={setSize} size={size} setSpeed={setSpeed} speed={speed} handleStart={handleStart} isSorting={isSorting} />
       <Visualizer arr={arr} speed={speed} />
     </div>
