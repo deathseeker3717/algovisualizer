@@ -1,20 +1,27 @@
 # AlgoVisualizer
 
-AlgoVisualizer is a React-based web application that helps users understand algorithms through interactive visualizations. It focuses on making sorting and pathfinding algorithms easy to learn using real-time animations.
+AlgoVisualizer is an interactive web application built with React that helps you visualize and understand how various sorting (and soon pathfinding) algorithms work under the hood. 
 
-## 🚀 Features
+## ✨ Features
 
-* Visualize sorting algorithms (Bubble Sort, Merge Sort, Quick Sort, Insertion Sort)
-* Visualize pathfinding algorithms (BFS, DFS, Dijkstra)
-* Adjustable speed and array size
-* Dynamic maze/grid creation
-* Clean and interactive UI
+- **Sorting Algorithms**: Visualize the step-by-step execution of:
+  - Bubble Sort
+  - Merge Sort
+  - Quick Sort
+  - Insertion Sort
+- **Pathfinding Algorithms** (UI Preview): Includes modes for BFS, DFS, and Dijkstra's Algorithm (Logic coming soon!).
+- **Interactive Controls**:
+  - Adjust the array **size** and sorting **speed** in real-time.
+  - Generate new random arrays or reset the current one.
+- **Educational Info**: View Time Complexity, Space Complexity, descriptions, and video tutorials for each algorithm directly within the app.
+- **Theming**: Seamlessly toggle between Dark 🌚 and Light ☀️ modes.
+- **Rich Animations**: Smooth DOM array animations alongside sleek GSAP-powered text shuffling for the navigation.
 
 ## 🛠️ Tech Stack
 
-* React (Frontend)
-* JavaScript (ES6+)
-* CSS
+- **Frontend Framework**: React.js
+- **Styling**: Tailwind CSS & Custom CSS
+- **Animations**: GSAP (GreenSock Animation Platform) & Vanilla DOM Manipulation
 
 ## 📁 Folder Structure
 
