@@ -8,6 +8,7 @@ import { bubbleSort } from "./algorithms/sorting/bubbleSort"
 import { mergeSort } from "./algorithms/sorting/mergeSort"
 import { quickSort } from "./algorithms/sorting/quickSort"
 import { insertionSort } from "./algorithms/sorting/insertionSort"
+import "./styles/App.css"
 
 function App() {
   const [size,setSize] = useState(20)
@@ -16,9 +17,9 @@ function App() {
   const [algorithm, setAlgorithm] = useState("Bubble Sort")
   const [isSorting, setIsSorting] = useState(false)
 
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("☀️");
   const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+    setTheme((prev) => (prev === "☀️" ? "🌚" : "☀️"));
   }
 
   const handleStart = () => {
@@ -47,7 +48,7 @@ function App() {
   },[size])
 
   return (
-    <div className={theme === "dark" 
+    <div className={theme === "🌚" 
     ? "min-h-screen bg-slate-950 text-white" 
     : "min-h-screen bg-white text-black"}>
       <Navbar algorithm={algorithm} setAlgorithm={setAlgorithm} theme={theme} />
@@ -56,10 +57,10 @@ function App() {
   <Controls setArr={setArr} setSize={setSize} size={size} setSpeed={setSpeed} speed={speed} handleStart={handleStart} isSorting={isSorting}
   />
   <button 
-    className="rounded-md border border-slate-300 px-4 py-2"
+    className="theme-toggle rounded-md border border-slate-300 px-3 py-2"
     onClick={toggleTheme}
   >
-    {theme === "light" ? "Dark Mode" : "Light Mode"}
+    {theme === "☀️" ? "🌚" : "☀️ "}
   </button>
 </div>
 

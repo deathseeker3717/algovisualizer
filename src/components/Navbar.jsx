@@ -3,7 +3,7 @@ import { useState } from "react"
 export default function Navbar({algorithm, setAlgorithm, theme}){
     const [mode, setMode] = useState("sorting")
     return (
-        <div className={theme === "dark"
+        <div className={theme === "🌚"
             ? "grid grid-cols-3 items-center px-6 py-4 border-b border-slate-800 bg-slate-900 text-white"
             : "grid grid-cols-3 items-center px-6 py-4 border-b border-slate-200 bg-white text-black"
         }>

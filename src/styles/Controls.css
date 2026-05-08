@@ -1,0 +1,70 @@
+.controls {
+
+  width: 90%;
+
+  margin: 30px auto;
+
+  padding: 20px;
+
+  background-color: #1e293b;
+
+  border-radius: 12px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 20px;
+
+  flex-wrap: wrap;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.controls button {
+
+  padding: 10px 18px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background-color: #334155;
+
+  color: white;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.controls button:hover {
+  background-color: #475569;
+}
+
+.controls button:disabled {
+
+  opacity: 0.5;
+
+  cursor: not-allowed;
+}
+
+.controls div {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.controls label {
+  color: white;
+}
+
+.controls input[type="range"] {
+  width: 150px;
+}
+
