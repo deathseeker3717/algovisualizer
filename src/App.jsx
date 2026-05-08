@@ -63,12 +63,11 @@ function App() {
   return (
     <div className={theme === "🌚" 
     ? "min-h-screen bg-slate-950 text-white" 
-    : "min-h-screen bg-white text-black"}>
+    : "min-h-screen bg-slate-100 text-black"}>
       <Navbar algorithm={algorithm} setAlgorithm={setAlgorithm} theme={theme} isSorting={isSorting} setInfo={setInfo} />
 
 <div className="flex items-start justify-between px-6 py-4">
-  <Controls setArr={setArr} setSize={setSize} size={size} setSpeed={setSpeed} speed={speed} handleStart={handleStart} isSorting={isSorting}
-  />
+  <Controls setArr={setArr} setSize={setSize} size={size} setSpeed={setSpeed} speed={speed} handleStart={handleStart} isSorting={isSorting} theme={theme} />
   <div className="theme-toggle">
   <button 
     onClick={toggleTheme}
