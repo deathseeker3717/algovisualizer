@@ -6,8 +6,6 @@
 
   padding: 20px;
 
-  background-color: #1e293b;
-
   border-radius: 12px;
 
   display: flex;
@@ -21,6 +19,16 @@
   flex-wrap: wrap;
 
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.controls-dark {
+  background-color: #1e293b;
+  color: white;
+}
+
+.controls-light {
+  background-color: #e2e8f0;
+  color: #0f172a;
 }
 
 .controls button {
@@ -60,8 +68,12 @@
   gap: 5px;
 }
 
-.controls label {
+.controls-dark label {
   color: white;
+}
+
+.controls-light label {
+  color: #0f172a;
 }
 
 .controls input[type="range"] {
