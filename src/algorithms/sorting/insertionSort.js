@@ -1,15 +1,18 @@
-export function insertionSort(arr) {
+export function insertionSort(arr, animations) {
   for (let i = 1; i < arr.length; i++) {
-    let key = arr[i];
-    let j = i - 1;
-
-    while (j >= 0 && arr[j] > key) {
-      arr[j + 1] = arr[j];
-      j--;
+    let j = i;
+    while (j > 0) {
+      animations.push({ type: "compare", indices: [j - 1, j] });
+      if (arr[j] < arr[j - 1]) {
+        animations.push({ type: "swap", indices: [j - 1, j] });
+        let temp = arr[j];
+        arr[j] = arr[j - 1];
+        arr[j - 1] = temp;
+        j--;
+      } else {
+        break;
+      }
     }
-
-    arr[j + 1] = key;
   }
-
-  return arr;
 }
+
