@@ -1,4 +1,7 @@
 import { useState } from "react"
+import Shuffle from '../animations/Shuffle';
+import "../styles/Navbar.css"
+
 export default function Navbar({algorithm, setAlgorithm, theme, isSorting, setInfo}){
     const [mode, setMode] = useState("sorting")
     return (
@@ -6,7 +9,22 @@ export default function Navbar({algorithm, setAlgorithm, theme, isSorting, setIn
             ? "grid grid-cols-3 items-center px-6 py-4 border-b border-slate-800 bg-slate-900 text-white"
             : "grid grid-cols-3 items-center px-6 py-4 border-b border-slate-200 bg-white text-black"
         }>
-        <h2 className="col-start-2 text-center font-semibold">AlgoVisualizer</h2>
+
+        <Shuffle className="audiowide-regular tracking-[6px]"
+            text="Algovisualizer"
+            shuffleDirection="right"
+            duration={0.55}
+            animationMode="evenodd"
+            shuffleTimes={1}
+            ease="power3.out"
+            stagger={0.03}
+            threshold={0.1}
+            triggerOnce={true}
+            triggerOnHover
+            respectReducedMotion={true}
+            loop={true}
+            loopDelay={1}
+            />
 
         <div className="col-start-3 justify-self-end flex flex-col items-end gap-2">
             <div className="flex gap-2">
