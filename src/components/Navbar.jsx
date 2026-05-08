@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function Navbar({algorithm, setAlgorithm, theme}){
+export default function Navbar({algorithm, setAlgorithm, theme, isSorting}){
     const [mode, setMode] = useState("sorting")
     return (
         <div className={theme === "🌚"
@@ -11,10 +11,10 @@ export default function Navbar({algorithm, setAlgorithm, theme}){
 
         <div className="col-start-3 justify-self-end flex flex-col items-end gap-2">
             <div className="flex gap-2">
-                <button className="rounded-md border border-slate-300 px-3 py-2" onClick={() => setMode("sorting")}>Sorting</button>
-                <button className="rounded-md border border-slate-300 px-3 py-2" onClick={() => setMode("pathfinding")}>Pathfinding</button>
+                <button className="rounded-md border border-slate-300 px-3 py-2 disabled:opacity-50" onClick={() => setMode("sorting")} disabled={isSorting}>Sorting</button>
+                <button className="rounded-md border border-slate-300 px-3 py-2 disabled:opacity-50" onClick={() => setMode("pathfinding")} disabled={isSorting}>Pathfinding</button>
             </div>
-            <select value={algorithm} onChange={(e)=> setAlgorithm(e.target.value)}>
+            <select className="disabled:opacity-50" value={algorithm} onChange={(e)=> setAlgorithm(e.target.value)} disabled={isSorting}>
                 {mode === "sorting" ? 
                 (<>
                 <option>Bubble Sort</option>

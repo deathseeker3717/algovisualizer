@@ -3,9 +3,11 @@ export default function Bar({value}){
         <div className="bar" 
         style={{
             height: `${value}px`,
-            width: "20px",
+            width: "100%",
+            maxWidth: "30px",
+            flex: 1,
             backgroundColor: "teal",
-            margin: "2px",
+            margin: "0 1px",
         }}
         ></div>
     )
