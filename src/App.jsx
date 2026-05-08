@@ -67,12 +67,13 @@ function App() {
 <div className="flex items-start justify-between px-6 py-4">
   <Controls setArr={setArr} setSize={setSize} size={size} setSpeed={setSpeed} speed={speed} handleStart={handleStart} isSorting={isSorting}
   />
+  <div className="theme-toggle">
   <button 
-    className="theme-toggle rounded-md border border-slate-300 px-3 py-2"
     onClick={toggleTheme}
   >
     {theme === "☀️" ? "🌚" : "☀️ "}
   </button>
+  </div>
 </div>
 
 <Visualizer arr={arr} speed={speed} />
