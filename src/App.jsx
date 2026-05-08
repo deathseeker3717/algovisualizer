@@ -9,7 +9,7 @@ import { mergeSort } from "./algorithms/sorting/mergeSort"
 import { quickSort } from "./algorithms/sorting/quickSort"
 import { insertionSort } from "./algorithms/sorting/insertionSort"
 import "./styles/App.css"
-
+import { algorithmInfo } from "./data/algorithmInfo"
 function App() {
   const [size,setSize] = useState(20)
   const [arr,setArr] = useState([])
@@ -21,6 +21,8 @@ function App() {
   const toggleTheme = () => {
     setTheme((prev) => (prev === "☀️" ? "🌚" : "☀️"));
   }
+
+  const [info, setInfo] = useState(false);
 
   const handleStart = () => {
     setIsSorting(true)
@@ -62,7 +64,7 @@ function App() {
     <div className={theme === "🌚" 
     ? "min-h-screen bg-slate-950 text-white" 
     : "min-h-screen bg-white text-black"}>
-      <Navbar algorithm={algorithm} setAlgorithm={setAlgorithm} theme={theme} isSorting={isSorting} />
+      <Navbar algorithm={algorithm} setAlgorithm={setAlgorithm} theme={theme} isSorting={isSorting} setInfo={setInfo} />
 
 <div className="flex items-start justify-between px-6 py-4">
   <Controls setArr={setArr} setSize={setSize} size={size} setSpeed={setSpeed} speed={speed} handleStart={handleStart} isSorting={isSorting}
@@ -75,6 +77,28 @@ function App() {
   </button>
   </div>
 </div>
+
+{info && (
+  <div className="mx-6 mb-4 rounded-md border border-slate-300 p-4">
+    <div className="flex items-center justify-between">
+      <h3 className="text-lg font-semibold">
+        {algorithmInfo[algorithm].title}
+      </h3>
+
+      <button
+        className="rounded-md border border-slate-300 px-3 py-1"
+        onClick={() => setInfo(false)}
+      >
+        Close
+      </button>
+    </div>
+
+    <p>{algorithmInfo[algorithm].description}</p>
+    <p>Time Complexity: {algorithmInfo[algorithm].timeComplexity}</p>
+    <p>Space Complexity: {algorithmInfo[algorithm].spaceComplexity}</p>
+  </div>
+)}
+
 
 <Visualizer arr={arr} speed={speed} />
 

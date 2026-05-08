@@ -1,6 +1,5 @@
 import { useState } from "react"
-
-export default function Navbar({algorithm, setAlgorithm, theme, isSorting}){
+export default function Navbar({algorithm, setAlgorithm, theme, isSorting, setInfo}){
     const [mode, setMode] = useState("sorting")
     return (
         <div className={theme === "🌚"
@@ -29,6 +28,12 @@ export default function Navbar({algorithm, setAlgorithm, theme, isSorting}){
                 <option>Dijkstra</option>
                 </>)}
             </select>
+            <button
+            className="rounded-md border border-slate-300 px-3 py-2 disabled:opacity-50"
+            onClick={() => setInfo(true)}
+            disabled={isSorting}>
+    Info
+    </button>
         </div>
         </div>
     )
