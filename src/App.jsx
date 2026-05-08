@@ -95,6 +95,15 @@ function App() {
     <p>{algorithmInfo[algorithm].description}</p>
     <p>Time Complexity: {algorithmInfo[algorithm].timeComplexity}</p>
     <p>Space Complexity: {algorithmInfo[algorithm].spaceComplexity}</p>
+    {algorithmInfo[algorithm].videoUrl && (
+  <iframe
+    className="className=mx-auto mt-4 aspect-video w-full max-w-md rounded-md"
+    src={algorithmInfo[algorithm].videoUrl}
+    title={`${algorithmInfo[algorithm].title} video`}
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+  />
+)} 
   </div>
 )}
 
